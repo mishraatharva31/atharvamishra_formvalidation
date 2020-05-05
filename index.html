@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Form Validation</title>
+<link rel="stylesheet" 
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body style="background-image: url('download2.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;">
+    <h3 style="text-align:center; line-height:50px">Form</h3>
+   <div class="container" style="background-color:#ecf0f1;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+          transition: 0.3s;width: 80%; height: 100%;">
+      <form onsubmit="return validation()">
+       <div class="form-group">
+          <label style="font-family: 'Merriweather', serif;">Name</label>
+          <input type="text" id="Name" class="form-control">
+          <span id="nameerror" class="text-danger" font-weight-bold"></span>    
+      </div>
+       
+       <div class="form-group">
+          <label style="font-family: 'Merriweather', serif;">Email-Id</label>
+          <input type="text" id="Mail" class="form-control"> 
+          <span id="mailerror" class="text-danger" font-weight-bold"></span>      
+      </div>
+      
+       <div class="form-group">
+          <label style="font-family: 'Merriweather', serif;">Scholar No</label>
+          <input type="text" id="No" class="form-control">    
+          <span id="noerror" class="text-danger" font-weight-bold"></span>   
+      </div>
+       <button type="submit" style="background-color:#7efff5;font-family: 'Merriweather', serif;">Submit</button>
+     </form>
+  </div>
+  <script type="text/javascript">
+      function validation(){      
+      var name= document.getElementById('Name').value;
+      var mail= document.getElementById('Mail').value;
+      var scholarno= document.getElementById('No').value;
+      
+      var namecheck= /^[A-Za-z. ]{2,50}$/ ;
+      var mailcheck= /^[A-Za-z_.]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,7}$/ ;
+      var nocheck= /^[1][6789][0-9]{7}$/;
+      if(namecheck.test(name))
+        {document.getElementById('nameerror').innerHTML=" ";}
+      else {document.getElementById('nameerror').innerHTML="Invalid Name";
+            return false;}
+      if(mailcheck.test(mail))
+        {document.getElementById('mailerror').innerHTML=" ";}
+      else {document.getElementById('mailerror').innerHTML="Invalid Email-Id";
+            return false;}
+      if(nocheck.test(scholarno))
+        {document.getElementById('noerror').innerHTML=" ";}
+      else {document.getElementById('noerror').innerHTML="Invalid Scholarno ";
+            return false;}
+     if(namecheck.test(name)&& mailcheck.test(mail) && nocheck.test(scholarno))
+       {alert("Form submitted successfully");}
+       }
+  </script>
+</body>
+</html>
